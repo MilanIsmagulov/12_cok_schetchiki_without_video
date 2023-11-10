@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../generalStyles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Электрические нагрузки</title>
+</head>
+<body>
+    <div class="main_window">
+        <div class="black_header">
+            <h1>
+                Электрические нагрузки
+            </h1>
+            <div class="links_black_header">
+                <a href="../../../index.html">На главную</a>
+                <a href="../../../new_material/page_new_mat.html" class="disabled_button">Назад</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="quiz_window">
+                <div id="quiz_part">
+                    <div class="window_header">
+                        <div class="questions" id="question_number_1">
+                            
+                        </div>
+                        <div class="number_marker">
+                            <img id="open_popup_button" src="./content/description.svg" alt="description">
+                            <p class="number_description"></p>
+                        </div>
+
+                    </div>
+                    <div class="theory_eom" id="theory_eom_2">
+                        <div class="second">
+                            
+                            <div class="left_side">
+                                <p>Изучите на <b>структурной схеме электронного счетчика электрической энергии</b> назначение основных функциональных блоков.</p>
+                                <div class="leftimage">
+                                    <div class="leftimage img">
+                                        <img src="./content/1.png">
+                                        <button class="leftimage_zoom_popup" onclick="location.href='#popup3'" ><img src="./content/zoom_up.svg" alt="2"></button>
+                                    </div>
+                                    <div class="leftimage text">
+                                        <p><b class="bluetext">Источник питания</b>– представляет собой импульсный преобразователь; обеспечивает питание основных узлов счетчика.</p>
+                                        <p><b class="bluetext">Измерительное устройство </b>(аналого-цифровой преобразователь) – осуществляет одновременное измерение мгновенных значений сигналов датчиков токов и напряжений в каждой фазе и преобразует их в цифровой код.</p>
+                                        <p><b class="bluetext">Дисплей </b> – предназначен для визуального отображения текущей и служебной информации счетчика.</p>
+                                    </div>
+                                    <br>                             
+                                </div>
+                                <p><b class="bluetext">Контроллер дисплея</b> – предназначен для управления дисплеем, преобразует входящую информацию для последующего графического отображения.</p><br>
+                                <p><b class="bluetext">Микроконтроллер</b> – управляет всеми узлами счетчика и реализует алгоритмы вычисления параметров в соответствии с программой, хранящейся в его внутренней памяти микроконтроллера.</p><br>
+                                <p><b class="bluetext">Внутренняя память</b> – предназначена для энергонезависимого хранения основных параметров счетчика, текущей и служебной информации; имеет аппаратную защиту от перезаписи. </p><br>
+                                <p><b class="bluetext">Кнопки управления</b> – предназначены для задания алгоритмов работы счетчика, а также вывода на дисплей текущей и служебной информации.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step_marker_and_buttons">
+                        <div class="step_marker">
+                            
+                        </div>
+                        <div class="main_buttons">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="popup1" class="popup close">
+            <div class="popup_body">
+                <div class="popup_content">
+                    <div class="popup_header">
+                        <h3></h3>
+                        <button id="close_popup_button_1"><img src="./content/close.svg" alt="close"></button>
+                    </div>
+                    <div class="popup_text">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div id="popup3" class="popup close">
+            <div class="popup_body">
+                <div class="popup_content">
+                    <div class="popup_header">
+                        <h3> </h3>
+                        <button onclick="location.href='#'" id="close_popup_button_1"><img src="./content/close.svg" alt="close"></button>
+                    </div>
+                    <div class="popup_text" id="zoomed" style="display: flex;align-items: center;">
+                        <img src="./content/1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./scripts/main.js" defer></script>
+<script src="../generalJs/script.js" defer></script>
+
+</html>
