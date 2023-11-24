@@ -85,8 +85,8 @@ function createBottomPopUp(question){
     el.appendChild(elChB);
     let elChD = document.createElement("p");
     elChD.setAttribute("id", "question_price");
-    let elChDChA = document.createTextNode(`Правильный ответ даст ${question.price} очков`);
-    elChD.appendChild(elChDChA);
+    // let elChDChA = document.createTextNode(`Правильный ответ даст ${question.price} очков`);
+    // elChD.appendChild(elChDChA);
     el.appendChild(elChD);
 
     return el;
@@ -360,7 +360,7 @@ function createBodyPopUp_Type3(question){
     elChB.appendChild(elChBChB);
     el.appendChild(elChB);
 
-    if (!questionIsPassed(question)) elChB.appendChild(createBottomPopUp(question));
+    if (!questionIsPassed(question)) elChB.appendChild(createBottomPopUp(question));  
 
     return el;
 }
@@ -420,7 +420,7 @@ function createDrag_Type3(question, i){
     let elChA = document.createTextNode(`${question.answers[i]}`);
     el.appendChild(elChA);
 
-    el.addEventListener('mousedown', (e) => dragNdropHandler(e));
+    // el.addEventListener('mousedown', (e) => dragNdropHandler(e));
 
     return el;
 }
@@ -513,7 +513,7 @@ function createAnswer_Type4(text, flag = false) {
     let elChA = document.createTextNode(`${text}`);
     el.appendChild(elChA);
 
-    if (!flag) el.addEventListener('mousedown', (e) => dragNdropHandler(e));
+    // if (!flag) el.addEventListener('mousedown', (e) => dragNdropHandler(e));
 
     
 
@@ -690,18 +690,21 @@ function createResult(){
     elChBChDChBChD.appendChild(elChBChDChBChDChA);
     elChBChDChB.appendChild(elChBChDChBChD);
     elChBChD.appendChild(elChBChDChB);
-    let elChBChDChD = document.createElement("div");
-    elChBChDChD.setAttribute("class", "questions_result_correct");
-    let elChBChDChDChB = document.createElement("div");
-    let elChBChDChDChBChA = document.createTextNode("Ваш результат:");
-    elChBChDChDChB.appendChild(elChBChDChDChBChA);
-    elChBChDChD.appendChild(elChBChDChDChB);
-    let elChBChDChDChD = document.createElement("div");
-    elChBChDChDChD.setAttribute("id", "result_users_correct_answered");
-    let elChBChDChDChDChA = document.createTextNode(`${score} очков`);
-    elChBChDChDChD.appendChild(elChBChDChDChDChA);
-    elChBChDChD.appendChild(elChBChDChDChD);
-    elChBChD.appendChild(elChBChDChD);
+
+    // Подсчет очков. Нет надобности в обычных тестах
+    // let elChBChDChD = document.createElement("div");
+    // elChBChDChD.setAttribute("class", "questions_result_correct");
+    // // let elChBChDChDChB = document.createElement("div");
+    // // let elChBChDChDChBChA = document.createTextNode("Ваш результат:");
+    // // elChBChDChDChB.appendChild(elChBChDChDChBChA);
+    // // elChBChDChD.appendChild(elChBChDChDChB);
+    // // let elChBChDChDChD = document.createElement("div");
+    // // elChBChDChDChD.setAttribute("id", "result_users_correct_answered");
+    // // let elChBChDChDChDChA = document.createTextNode(`${score} очков`);
+    // // elChBChDChDChD.appendChild(elChBChDChDChDChA);
+    // // elChBChDChD.appendChild(elChBChDChDChD);
+    // elChBChD.appendChild(elChBChDChD);
+    
     let elChBChDChF = document.createElement("div");
     elChBChDChF.setAttribute("class", "questions_result_stats");
     let elChBChDChFChB = document.createElement("div");
@@ -744,4 +747,96 @@ function createResult(){
     el.appendChild(elChB);
 
     return el;
+}
+
+function createDragNDropHandlers(question) {
+    let idq = question.type;
+    
+    switch (idq){
+        case 3:
+            DnDHandlers_Type_3();
+            break;
+        case 4:
+            DnDHandlers_Type_4();
+            break;
+    }
+}
+
+function DnDHandlers_Type_3(argument) {
+    var row = document.getElementsByClassName('question_type_3_drags')[0];
+    var countDrops = row.children.length;
+    // console.log(countDrops);
+
+    for (let i = 0; i < countDrops; i++){
+
+        var dropZone = document.getElementById(`question_type_3_answer_drop_zone_${i}`)
+
+        new Sortable(dropZone, {
+
+            group: 'shared',
+            animation: 150,
+            onAdd: function(e){
+                var itemEl = e.item;
+                var targetList = e.to;
+                if (targetList.children.length > 1) {
+
+                    var existingItem;
+                    if (targetList.children[0] === itemEl) {
+                        existingItem = targetList.children[1];
+                    } else {
+                        existingItem = targetList.children[0];
+                    }
+                    
+                    var sourceList = e.from;
+                    sourceList.appendChild(existingItem);
+                    targetList.appendChild(itemEl);
+
+                    if (targetList.className != "question_type_3_answer_drop_zone") itemEl.style = "";
+                    if (sourceList.className == "question_type_3_drags") existingItem.style = "";
+                    
+                }
+            },
+            onEnd: function(e) {
+                if (e.to.className == "question_type_3_drags") e.item.style = "";
+            }
+
+        });
+    }
+
+    new Sortable(row, {
+            
+            group: {
+                name: 'shared',
+                put: false // Do not allow items to be put into this list
+            },
+            
+            animation: 150,
+            onEnd: function(e) {
+
+                if (e.to.className != "question_type_3_drags" ) e.item.style = "background-color: white; color: black";
+                
+            }
+        });
+}
+
+function DnDHandlers_Type_4(argument) {
+    // body... question_type_4_answer_drop_zone
+    var row = document.getElementsByClassName('question_type_4_answers')[0];
+    var drops = document.getElementsByClassName('question_type_4_answer_drop_zone');
+    
+
+    for (let i = 0; i < drops.length; i++){
+        var dropZone = drops[i];
+        new Sortable(dropZone, {
+            group: 'shared',
+            animation: 150,
+        });
+    }
+
+    new Sortable(row, {
+        group: 'shared',
+        swap: false,
+        swapClass: "highlight",
+        animation: 150,
+    });
 }

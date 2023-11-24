@@ -166,11 +166,13 @@ body{
 
 
 .step_marker_and_buttons{
-    margin-left: 25px;
-    margin-right: 25px;
+    padding: 25px !important;
     align-items: flex-end;
     justify-content: space-between;
     display: flex;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    width: 100%;
 }
 
 .main_buttons button{
@@ -279,12 +281,6 @@ body{
     }
 }
 
-.step_marker_and_buttons{
-    margin-top: 60px;
-    padding-bottom: 50px;
-    width: 96%;
-}
-
 
 
 /*Добавлено*/
@@ -307,6 +303,7 @@ body{
     color:#0070c0 !important;
 }
 .blocked{
+    display: none;
     background-color: #bfbfbf !important;
 }
 .flexcenter{
@@ -383,6 +380,12 @@ body{
 .mb1{
     margin-bottom: 1em;
 }
+.mb05{
+    margin-bottom: .5em;
+}
+.mb025{
+    margin-bottom: .25em;
+}
 .inline{
     display: inline-block;
 }
@@ -428,6 +431,7 @@ body{
     justify-content: center;
 }
 .leftimage.img img{
+
     width: 70%;
 }
 .leftimage.text{
@@ -443,6 +447,8 @@ body{
     margin-top: 1em;
     margin-bottom: 1em;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .left30{
     left: 30% !important;
@@ -501,7 +507,6 @@ body{
 }
 
 
-
 /*Стили для блока: картинка под ней чекбокс(радио)*/
 .imgcheckbox{
     width: 20%;
@@ -541,7 +546,8 @@ body{
 
 }
 .variant{
-    padding: 2em;
+    padding: 1.5em;
+    margin-bottom: 15px !important;
     border-radius: 15px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
     font-size: 0.8em;
@@ -574,7 +580,7 @@ body{
     padding-top: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
-    font-size: 0.9em !important;
+    font-size: clamp(0.5em,2vw,0.9em) !important;
 }
 .cornum{
     display: flex;

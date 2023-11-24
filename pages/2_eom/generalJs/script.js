@@ -9,6 +9,14 @@ let h=document.querySelector('.questions')
 
 h.innerHTML="<div><p><span>"+ numberOfQuestion + ".</span> " + plan[numberOfQuestion-1] + "</p></div>"
 
+// if (plan[index] == 6){
+
+// } else {
+//     const textOfQuestion = `Гальваническое совмещение цепей тока и напряжения посредством установки перемычек на счетчике и трансформаторе тока является особенностью:`
+//     const qPlc = document.querySelector('#question_number_1')
+//     qPlc.innerHTML = "<div><p>" + textOfQuestion + "</p></div>"
+// }
+
 
 
 
@@ -109,3 +117,6 @@ if(document.querySelector('.tosuffle') != null){
     }
     rightans=nra
 }
+
+
+
